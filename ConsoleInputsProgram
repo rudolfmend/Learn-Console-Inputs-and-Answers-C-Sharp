@@ -1,0 +1,70 @@
+// English: this application takes either a string, an integer or a decimal from one input in the console and writes the answer based on it
+// English:  is error free. The logic is correct.
+
+// Sk: táto aplikácia berie z jedného vstupu v konzole buď string celé číslo alebo decimal a na základe toho vypíše odpoveď
+// Sk: je bez chýb. Logika je správna.
+
+using System;
+
+namespace ConsoleInputsProgram
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] cities = { "Berlin", "Frankfurt", "Wien", "Graz", "Bern" };
+            string[] employees = { "Voemer", "Bergman", "Ford", "Manzzini", "Schleicher" };
+            string[] services = { "transport", "dispatching", "fabrication", "revisions", "marketing" };
+            string[] manufacturers = { "Shenzhen", "Shenyuan", "Guangzhou", "Ningbo", "Zhongshan" };
+
+            Console.WriteLine("Please enter 'cities', 'employees', 'services', 'manufacturers' or number:");
+            string input = Console.ReadLine() ?? string.Empty;
+            int inputInteger;
+            decimal inputDecimal;
+
+            // 
+            if (int.TryParse(input, out inputInteger))
+            {
+                inputDecimal = inputInteger;
+            }
+            else if (!decimal.TryParse(input, out inputDecimal))
+            {
+                inputDecimal = 0; // Default value if input is invalid
+            }
+            //
+
+            if (inputDecimal == 1m || input == "c" || input == "C" || input == "cities" || input == "Cities" || input == "city" || input == "City")
+            {
+                foreach (string city in cities)
+                {
+                    Console.WriteLine(city);
+                }
+            }
+            else if (inputDecimal == 2m || input == "employees" || input == "e" || input == "E" || input == "Employees" || input == "emp")
+            {
+                foreach (string employee in employees)
+                {
+                    Console.WriteLine(employee);
+                }
+            }
+            else if (inputDecimal == 3m || input == "service" || input == "Service" || input == "s" || input == "S" || input == "serv")
+            {
+                foreach (string service in services)
+                {
+                    Console.WriteLine(service);
+                }
+            }
+            else if (inputDecimal == 4m || input == "f" || input == "F" || input == "fabric")
+            {
+                foreach (string manufacturer in manufacturers)
+                {
+                    Console.WriteLine(manufacturer);
+                }
+            }
+            else
+            {
+                Console.WriteLine("Invalid entry. Please enter: c / e / s / f.");
+            }
+        }
+    }
+}
